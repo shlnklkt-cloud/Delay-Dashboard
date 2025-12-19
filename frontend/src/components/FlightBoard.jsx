@@ -5,8 +5,11 @@ import { Plane, Clock } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import axios from 'axios';
 
 const SINGAPORE_TZ = 'Asia/Singapore';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const FlightBoard = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -14,6 +17,25 @@ const FlightBoard = () => {
   const [showClaimDialog, setShowClaimDialog] = useState(false);
   const [selectedClaim, setSelectedClaim] = useState(null);
   const [showWhatsAppNotification, setShowWhatsAppNotification] = useState(false);
+  
+  // Function to send WhatsApp message
+  const sendWhatsAppMessage = async (flight) => {
+    try {
+      const response = await axios.post(`${API}/send-whatsapp`, {
+        to_number: flight.phoneNumber,
+        claim_number: flight.claimNumber,
+        amount: flight.claimPaidAmount,
+        flight_number: flight.flightNumber,
+        traveller_name: flight.travellers
+      });
+      
+      console.log('WhatsApp message sent:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error sending WhatsApp message:', error);
+      return null;
+    }
+  };
 
   // Initialize flight data
   useEffect(() => {
