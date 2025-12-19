@@ -24,6 +24,7 @@ const FlightBoard = () => {
         id: 1,
         policyNumber: 'TRV-2026-001487',
         travellers: 'Jolene Chua',
+        phoneNumber: '+6598741945',
         flightNumber: 'SQ656',
         route: 'SIN → HAK',
         flightStatus: 'Delayed',
