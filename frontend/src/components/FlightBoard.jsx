@@ -220,18 +220,20 @@ const FlightBoard = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-8 px-6">
-        <div className="max-w-7xl mx-auto flex items-center gap-4">
+      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-6 px-6">
+        <div className="max-w-7xl mx-auto">
           <img 
             src="https://customer-assets.emergentagent.com/job_delay-dashboard/artifacts/hxowuzrq_image.png" 
             alt="Income Logo"
-            className="h-10"
+            className="h-8 mb-4"
             data-testid="income-logo"
           />
-          <Plane className="w-12 h-12" />
-          <div>
-            <h1 className="text-3xl font-bold">Claim Command Center</h1>
-            <p className="text-orange-100 mt-1">Real-time triggers for travel insurance claims</p>
+          <div className="flex items-center gap-3">
+            <Plane className="w-10 h-10" />
+            <div>
+              <h1 className="text-2xl font-bold">Claim Command Center</h1>
+              <p className="text-orange-100 mt-1 text-sm">Real-time triggers for travel insurance claims</p>
+            </div>
           </div>
         </div>
       </div>
