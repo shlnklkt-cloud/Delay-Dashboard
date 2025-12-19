@@ -38,6 +38,31 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+# WhatsApp Message Models
+class WhatsAppMessage(BaseModel):
+    to_number: str = Field(..., description="Recipient's WhatsApp number with country code (e.g., +6591234567)")
+    claim_number: str
+    amount: str
+    flight_number: str
+    traveller_name: str
+
+class WhatsAppResponse(BaseModel):
+    success: bool
+    message: str
+    message_sid: Optional[str] = None
+
+# Twilio Configuration
+def get_twilio_client():
+    """Get Twilio client with credentials from environment variables"""
+    account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
+    auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
+    
+    if not account_sid or not auth_token:
+        logger.warning("Twilio credentials not found in environment variables")
+        return None
+    
+    return Client(account_sid, auth_token)
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
