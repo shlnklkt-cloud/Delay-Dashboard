@@ -70,7 +70,7 @@ const FlightBoard = () => {
         actualDepartureTime: 'N/A',
         claimNumber: 'CLM-TRV-2026-008424',
         claimStatus: 'Paid',
-        claimPaidAmount: 'S $150'
+        claimPaidAmount: '$150'
       },
       {
         id: 5,
