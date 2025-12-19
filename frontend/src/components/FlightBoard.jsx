@@ -179,20 +179,35 @@ const FlightBoard = () => {
     setFlights(initialFlights);
 
     // Set up timer for SQ656 claim after 30 seconds
-    const timer = setTimeout(() => {
+    const timer = setTimeout(async () => {
+      // Update the flight with claim information
+      const updatedFlight = {
+        claimNumber: 'CLM-TRV-2026-008431',
+        claimStatus: 'Paid',
+        claimPaidAmount: '$100'
+      };
+
       setFlights(prev => prev.map(flight => {
         if (flight.flightNumber === 'SQ656') {
           return {
             ...flight,
-            claimNumber: 'CLM-TRV-2026-008431',
-            claimStatus: 'Paid',
-            claimPaidAmount: '$100'
+            ...updatedFlight
           };
         }
         return flight;
       }));
 
-      // Show WhatsApp notification popup only
+      // Find the SQ656 flight to send WhatsApp message
+      const sq656Flight = initialFlights.find(f => f.flightNumber === 'SQ656');
+      if (sq656Flight) {
+        // Send actual WhatsApp message via API
+        await sendWhatsAppMessage({
+          ...sq656Flight,
+          ...updatedFlight
+        });
+      }
+
+      // Show WhatsApp notification popup
       setShowWhatsAppNotification(true);
     }, 30000); // 30 seconds
 
