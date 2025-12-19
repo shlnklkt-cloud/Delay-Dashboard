@@ -92,6 +92,59 @@ async def get_status_checks():
     
     return status_checks
 
+@api_router.post("/send-whatsapp", response_model=WhatsAppResponse)
+async def send_whatsapp_notification(message_data: WhatsAppMessage):
+    """
+    Send WhatsApp notification for claim payment
+    """
+    try:
+        # Get Twilio client
+        twilio_client = get_twilio_client()
+        
+        if not twilio_client:
+            # Return success but indicate it's a mock message (for development without credentials)
+            logger.info(f"Mock WhatsApp message - Would send to {message_data.to_number}")
+            return WhatsAppResponse(
+                success=True,
+                message=f"Mock message sent (Twilio credentials not configured). Message would be: Hurray! Your claim {message_data.claim_number} has been successfully paid in the amount of {message_data.amount}.",
+                message_sid="mock_sid_" + str(uuid.uuid4())
+            )
+        
+        # Get WhatsApp from number from environment
+        from_number = os.environ.get('TWILIO_WHATSAPP_NUMBER', 'whatsapp:+14155238886')
+        
+        # Format the message
+        message_body = f"""Hurray! Your claim has been successfully paid.
+
+Claim Number: {message_data.claim_number}
+Flight: {message_data.flight_number}
+Traveller: {message_data.traveller_name}
+Amount Paid: {message_data.amount}
+
+Thank you for choosing Income Insurance!"""
+        
+        # Send WhatsApp message via Twilio
+        message = twilio_client.messages.create(
+            body=message_body,
+            from_=from_number,
+            to=f"whatsapp:{message_data.to_number}"
+        )
+        
+        logger.info(f"WhatsApp message sent successfully. SID: {message.sid}")
+        
+        return WhatsAppResponse(
+            success=True,
+            message="WhatsApp notification sent successfully",
+            message_sid=message.sid
+        )
+        
+    except Exception as e:
+        logger.error(f"Error sending WhatsApp message: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to send WhatsApp message: {str(e)}"
+        )
+
 # Include the router in the main app
 app.include_router(api_router)
 
