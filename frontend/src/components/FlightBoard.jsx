@@ -219,6 +219,18 @@ const FlightBoard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Income Logo */}
+      <div className="bg-white py-4 px-6 shadow-sm">
+        <div className="max-w-7xl mx-auto">
+          <img 
+            src="https://customer-assets.emergentagent.com/job_delay-dashboard/artifacts/hxowuzrq_image.png" 
+            alt="Income Logo"
+            className="h-12"
+            data-testid="income-logo"
+          />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-8 px-6">
         <div className="max-w-7xl mx-auto flex items-center gap-4">
