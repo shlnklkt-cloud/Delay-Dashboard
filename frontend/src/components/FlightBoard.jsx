@@ -162,7 +162,7 @@ const FlightBoard = () => {
             ...flight,
             claimNumber: 'CLM-TRV-2026-008431',
             claimStatus: 'Paid',
-            claimPaidAmount: 'S $100'
+            claimPaidAmount: '$100'
           };
         }
         return flight;
