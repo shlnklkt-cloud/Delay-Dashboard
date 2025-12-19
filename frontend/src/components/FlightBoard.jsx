@@ -44,7 +44,7 @@ const FlightBoard = () => {
         actualDepartureTime: new Date(now.getTime() + 5 * 60 * 60 * 1000), // +5 hours
         claimNumber: 'CLM-TRV-2026-008420',
         claimStatus: 'Paid',
-        claimPaidAmount: 'S $100'
+        claimPaidAmount: '$100'
       },
       {
         id: 3,
