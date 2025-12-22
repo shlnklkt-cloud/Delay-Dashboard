@@ -106,7 +106,7 @@ async def send_whatsapp_notification(message_data: WhatsAppMessage):
             logger.info(f"Mock WhatsApp message - Would send to {message_data.to_number}")
             return WhatsAppResponse(
                 success=True,
-                message=f"Mock message sent (Twilio credentials not configured). Message would be: Hurray! Your claim {message_data.claim_number} has been successfully paid in the amount of {message_data.amount}.",
+                message=f"Mock message sent (Twilio credentials not configured). Message would be: A new claim of {message_data.amount} has successfully been paid.",
                 message_sid="mock_sid_" + str(uuid.uuid4())
             )
         
@@ -114,7 +114,7 @@ async def send_whatsapp_notification(message_data: WhatsAppMessage):
         from_number = os.environ.get('TWILIO_WHATSAPP_NUMBER', 'whatsapp:+14155238886')
         
         # Format the message
-        message_body = f"""Hurray! Your claim has been successfully paid.
+        message_body = f"""A new claim has successfully been paid.
 
 Claim Number: {message_data.claim_number}
 Flight: {message_data.flight_number}
