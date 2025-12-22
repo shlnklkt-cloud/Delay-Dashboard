@@ -291,6 +291,9 @@ const FlightBoard = () => {
                 <Clock className="w-4 h-4" />
                 <span>Singapore Time (SGT)</span>
               </div>
+              <div className="text-slate-400 text-xs mb-1">
+                {formatInTimeZone(currentTime, SINGAPORE_TZ, 'EEE, dd MMM yyyy')}
+              </div>
               <div className="text-2xl font-bold text-white tabular-nums">
                 {formatInTimeZone(currentTime, SINGAPORE_TZ, 'HH:mm:ss')}
               </div>
