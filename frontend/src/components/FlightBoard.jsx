@@ -417,7 +417,7 @@ const FlightBoard = () => {
                 />
                 <div>
                   <div className="font-semibold text-sm mb-1">Jiffy Jane</div>
-                  <div className="text-sm text-gray-600">Hurray! Your claim has been successfully paid in the amount of {selectedClaim.amount}.</div>
+                  <div className="text-sm text-gray-600">A new claim of {selectedClaim.amount} has successfully been paid.</div>
                 </div>
               </div>
             </div>
