@@ -322,7 +322,11 @@ const FlightBoard = () => {
               </TableHeader>
               <TableBody>
                 {flights.map((flight) => (
-                  <TableRow key={flight.id} className="hover:bg-gray-50" data-testid={`flight-row-${flight.flightNumber}`}>
+                  <TableRow 
+                    key={flight.id} 
+                    className={`hover:bg-gray-50 transition-colors ${flight.id === updatedFlightId ? 'bg-orange-50' : ''}`}
+                    data-testid={`flight-row-${flight.flightNumber}`}
+                  >
                     <TableCell className="font-bold text-orange-600" data-testid={`policy-${flight.flightNumber}`}>{flight.policyNumber}</TableCell>
                     <TableCell className="font-semibold text-black" data-testid={`travellers-${flight.flightNumber}`}>{flight.travellers}</TableCell>
                     <TableCell className="font-bold text-black" data-testid={`flight-number-${flight.flightNumber}`}>{flight.flightNumber}</TableCell>
