@@ -433,25 +433,27 @@ const FlightBoard = () => {
 
       {/* WhatsApp Notification Popup */}
       {showWhatsAppNotification && (
-        <div className="fixed bottom-6 right-6 bg-white rounded-lg shadow-2xl p-4 max-w-sm animate-in slide-in-from-bottom-5 duration-300" data-testid="whatsapp-notification">
-          <div className="flex items-start gap-3">
-            <img 
-              src="https://customer-assets.emergentagent.com/job_1418e2e7-6f08-4c5c-9213-60ede4b4b425/artifacts/61pe78cb_image.png" 
-              alt="Jiffy Jane"
-              className="w-12 h-12 rounded-lg"
-            />
-            <div className="flex-1">
-              <div className="font-semibold text-sm mb-1">Jiffy Jane</div>
-              <div className="text-sm text-gray-600 mb-2">A new claim of $100 has successfully been paid.</div>
-              <div className="text-xs text-gray-400">WhatsApp message sent to +6598741945</div>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-in fade-in duration-300" data-testid="whatsapp-notification-overlay">
+          <div className="bg-white rounded-lg shadow-2xl p-6 max-w-md w-full mx-4 animate-in zoom-in-95 duration-300" data-testid="whatsapp-notification">
+            <div className="flex items-start gap-4">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_1418e2e7-6f08-4c5c-9213-60ede4b4b425/artifacts/61pe78cb_image.png" 
+                alt="Jiffy Jane"
+                className="w-16 h-16 rounded-lg flex-shrink-0"
+              />
+              <div className="flex-1">
+                <div className="font-bold text-base mb-2">Jiffy Jane</div>
+                <div className="text-sm text-gray-700 mb-3">A new claim of $100 has successfully been paid.</div>
+                <div className="text-xs text-gray-500">WhatsApp message sent to +6598741945</div>
+              </div>
+              <button 
+                onClick={() => setShowWhatsAppNotification(false)}
+                className="text-gray-400 hover:text-gray-600 text-xl leading-none"
+                data-testid="close-notification-btn"
+              >
+                ✕
+              </button>
             </div>
-            <button 
-              onClick={() => setShowWhatsAppNotification(false)}
-              className="text-gray-400 hover:text-gray-600"
-              data-testid="close-notification-btn"
-            >
-              ✕
-            </button>
           </div>
         </div>
       )}
