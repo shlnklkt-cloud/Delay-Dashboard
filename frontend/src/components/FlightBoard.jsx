@@ -17,6 +17,7 @@ const FlightBoard = () => {
   const [showClaimDialog, setShowClaimDialog] = useState(false);
   const [selectedClaim, setSelectedClaim] = useState(null);
   const [showWhatsAppNotification, setShowWhatsAppNotification] = useState(false);
+  const [updatedFlightId, setUpdatedFlightId] = useState(null);
   
   // Function to send WhatsApp message
   const sendWhatsAppMessage = async (flight) => {
