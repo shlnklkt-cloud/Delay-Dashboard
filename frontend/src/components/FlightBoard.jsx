@@ -433,26 +433,26 @@ const FlightBoard = () => {
 
       {/* WhatsApp Notification Popup */}
       {showWhatsAppNotification && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-in fade-in duration-300" data-testid="whatsapp-notification-overlay">
-          <div className="bg-white rounded-lg shadow-2xl p-6 max-w-md w-full mx-4 animate-in zoom-in-95 duration-300" data-testid="whatsapp-notification">
-            <div className="flex items-start gap-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none" data-testid="whatsapp-notification-overlay">
+          <div className="bg-white rounded-2xl shadow-2xl p-5 max-w-sm w-full mx-4 pointer-events-auto border border-gray-100" data-testid="whatsapp-notification">
+            <div className="flex items-start gap-4 mb-4">
               <img 
                 src="https://customer-assets.emergentagent.com/job_1418e2e7-6f08-4c5c-9213-60ede4b4b425/artifacts/61pe78cb_image.png" 
                 alt="Jiffy Jane"
-                className="w-16 h-16 rounded-lg flex-shrink-0"
+                className="w-14 h-14 rounded-lg flex-shrink-0"
               />
-              <div className="flex-1">
-                <div className="font-bold text-base mb-2">Jiffy Jane</div>
-                <div className="text-sm text-gray-700 mb-3">A new claim of $100 has successfully been paid.</div>
-                <div className="text-xs text-gray-500">WhatsApp message sent to +6598741945</div>
+              <div className="flex-1 pt-1">
+                <div className="font-bold text-base mb-2 text-gray-900">Jiffy Jane</div>
+                <div className="text-sm text-gray-700 leading-relaxed">A new claim of $100 has successfully been paid.</div>
               </div>
-              <button 
-                onClick={() => setShowWhatsAppNotification(false)}
-                className="text-gray-400 hover:text-gray-600 text-xl leading-none"
-                data-testid="close-notification-btn"
-              >
-                ✕
-              </button>
+            </div>
+            <div className="flex items-center justify-end gap-2 text-xs text-gray-400">
+              <span className="inline-flex items-center gap-1">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10"/>
+                </svg>
+                Made with Emergent
+              </span>
             </div>
           </div>
         </div>
