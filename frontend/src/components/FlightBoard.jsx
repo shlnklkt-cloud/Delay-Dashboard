@@ -436,8 +436,8 @@ const FlightBoard = () => {
             />
             <div className="flex-1">
               <div className="font-semibold text-sm mb-1">Jiffy Jane</div>
-              <div className="text-sm text-gray-600 mb-2">Hurray! Your claim has been successfully paid in the amount of $100.</div>
-              <div className="text-xs text-gray-400">WhatsApp message sent to +91 9874719457</div>
+              <div className="text-sm text-gray-600 mb-2">A new claim of $100 has successfully been paid.</div>
+              <div className="text-xs text-gray-400">WhatsApp message sent to +6598741945</div>
             </div>
             <button 
               onClick={() => setShowWhatsAppNotification(false)}
