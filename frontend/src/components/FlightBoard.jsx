@@ -433,9 +433,18 @@ const FlightBoard = () => {
 
       {/* WhatsApp Notification Popup */}
       {showWhatsAppNotification && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none" data-testid="whatsapp-notification-overlay">
-          <div className="bg-white rounded-2xl shadow-2xl p-5 max-w-sm w-full mx-4 pointer-events-auto border border-gray-100" data-testid="whatsapp-notification">
-            <div className="flex items-start gap-4 mb-4">
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50" data-testid="whatsapp-notification-overlay">
+          <div className="bg-white rounded-2xl shadow-2xl p-5 max-w-sm w-full mx-4 relative" data-testid="whatsapp-notification">
+            {/* Close Button */}
+            <button 
+              onClick={() => setShowWhatsAppNotification(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg leading-none"
+              data-testid="close-notification-btn"
+            >
+              ✕
+            </button>
+            
+            <div className="flex items-start gap-4 mb-4 pr-6">
               <img 
                 src="https://customer-assets.emergentagent.com/job_1418e2e7-6f08-4c5c-9213-60ede4b4b425/artifacts/61pe78cb_image.png" 
                 alt="Jiffy Jane"
