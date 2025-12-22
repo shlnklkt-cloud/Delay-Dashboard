@@ -190,6 +190,7 @@ const FlightBoard = () => {
 
       setFlights(prev => prev.map(flight => {
         if (flight.flightNumber === 'SQ656') {
+          setUpdatedFlightId(flight.id); // Highlight this row
           return {
             ...flight,
             ...updatedFlight
