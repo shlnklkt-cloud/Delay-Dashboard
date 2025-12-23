@@ -30,7 +30,15 @@ const FlightBoard = () => {
       }
     };
     
+    // Initial wake-up
     wakeUpBackend();
+    
+    // Keep-alive: Ping backend every 5 minutes to prevent sleep
+    const keepAliveInterval = setInterval(() => {
+      wakeUpBackend();
+    }, 5 * 60 * 1000); // 5 minutes
+    
+    return () => clearInterval(keepAliveInterval);
   }, []);
   
   // Function to send WhatsApp message
