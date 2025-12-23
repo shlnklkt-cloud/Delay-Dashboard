@@ -19,6 +19,20 @@ const FlightBoard = () => {
   const [showWhatsAppNotification, setShowWhatsAppNotification] = useState(false);
   const [updatedFlightId, setUpdatedFlightId] = useState(null);
   
+  // Auto wake-up backend on component mount
+  useEffect(() => {
+    const wakeUpBackend = async () => {
+      try {
+        await axios.get(`${API}/`, { timeout: 5000 });
+        console.log('Backend is awake');
+      } catch (error) {
+        console.log('Backend wake-up call made:', error.message);
+      }
+    };
+    
+    wakeUpBackend();
+  }, []);
+  
   // Function to send WhatsApp message
   const sendWhatsAppMessage = async (flight) => {
     try {
