@@ -429,7 +429,7 @@ const FlightBoard = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-500">Status</p>
-                <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">
+                <Badge style={{ backgroundColor: '#98FB98' }} className="text-black hover:bg-[#98FB98] border-0">
                   {selectedClaim.status}
                 </Badge>
               </div>
