@@ -381,7 +381,7 @@ const FlightBoard = () => {
                     </TableCell>
                     <TableCell data-testid={`claim-status-${flight.flightNumber}`}>
                       {flight.claimStatus !== '-' ? (
-                        <Badge className="bg-blue-100 text-black hover:bg-blue-100 font-bold">
+                        <Badge style={{ backgroundColor: '#98FB98' }} className="text-black hover:bg-[#98FB98] font-bold border-0">
                           {flight.claimStatus}
                         </Badge>
                       ) : (
